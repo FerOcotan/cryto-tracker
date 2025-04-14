@@ -1,94 +1,150 @@
 :root {
-    --white: #FFF;
-    --primary: #61ECBC;
-    --black: #182339;
-  }
-  html {
-    font-size: 62.5%;
-  }
-  body {
-    background-image: url('/bg.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    font-family: 'Outfit', sans-serif;
-    font-size: 2rem;
-  }
-  .container {
-    max-width: 60rem;
-    width: 95%;
-    margin: 0 auto;
-  }
-  .app-title {
-    font-size: 3.8rem;
-    margin-top: 5rem;
-    color: var(--white);
-    line-height: .8;
-  }
-  .app-title span {
-    display: block;
-    color: var(--primary);
-    font-size: 4.4rem;
-  }
-  .content {
-    margin-top: 5rem;
-    padding: 6rem 2rem;
-    background-color: var(--white);
-    border-radius: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  --white: #FFF;
+  --primary: #067a0e;
+  --primary-dark: #0a5317;
+  --orange: #FF6A00;
+  --black: #182339;
+  --gray-light: #ECEBEB;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 1rem;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  background: url('/bg.jpg') center/cover no-repeat;
+  color: var(--black);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 60rem;
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.app-title {
+  font-size: clamp(3rem, 5vw, 3.8rem);
+  margin-top: 5rem;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.app-title span {
+  display: block;
+  font-size: clamp(2.5rem, 4vw, 3.2rem);
+  font-weight: 500;
+  
+  color: var(--orange);
+  font-size: clamp(3.5rem, 6vw, 4.4rem);
+}
+
+.content {
+  margin: 5rem 0;
+  padding: 4rem 2rem;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form label {
+  font-weight: 500;
+}
+
+.form select,
+.form [type="submit"] {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: var(--border-radius);
+  font-size: 1.8rem;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.form select {
+  background-color: var(--gray-light);
+  appearance: none;
+  cursor: pointer;
+}
+
+.form [type="submit"] {
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.form [type="submit"]:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.result-wrapper {
+  margin-top: 4rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.result-wrapper h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.result {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.result img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.result p {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+}
+
+.result span {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .result {
+    grid-template-columns: 1fr;
   }
   
-  .form,
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .form label {
-    color: var(--black);
-  }
-  .form select {
-    background-color: #ECEBEB;
-    border: none;
-    padding: 1rem;
-    border-radius: 1rem;
-    font-size: 1.8rem;
-  }
-  .form [type="submit"] {
-    background-color: var(--primary);
-    color: var(--black);
-    border: none;
-    padding: 1rem;
-    font-weight: 900;
-    cursor: pointer;
-    text-transform: uppercase;
-    margin-top: 2rem;
-    transition: background-color 300ms ease;
-  }
-  .form [type="submit"]:hover {
-    background-color: #0CB387;
-  }
-  
-  .result-wrapper {
-    margin-top: 5rem;
-  }
-  .result-wrapper h2 {
+  .app-title, .app-title span {
     text-align: center;
   }
-  .result {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
-    gap: 1rem;
-  }
-  .result img {
-    width: 100%;
-  }
-  .result p {
-    margin: 0 0 1rem;
-    font-size: 1.6rem;
-  }
-  .result span {
-    font-weight: 700;
-  }
+}

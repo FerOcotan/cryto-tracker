@@ -2,6 +2,7 @@ import { useCryptoStore } from "../store"
 import { currencies } from "../data"
 import { ChangeEvent, useState } from "react"
 import { Pair } from "../types"
+import ErrorMessage from "./ErrorMessage"
 
 export default function CriptoSearchForm() {
     const cryptocurrencies = useCryptoStore((state) => state.cryptocurrencies)
@@ -37,7 +38,8 @@ export default function CriptoSearchForm() {
             onSubmit={handleSubmit}
         >
 
-           
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+
             <div className='field'>
                 <label htmlFor="currency">Moneda:</label>
                 <select 
